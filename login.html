@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/hf.css"/>
+    <style>
+        .from-group {
+            width: 404px;
+            height: 52px;
+            border: 1px solid #DDDDDD;
+            margin: 35px 0;
+            position: relative;
+        }
+        .control-label {
+            display: inline-block;
+            width: 100px;
+            height: 52px;
+            line-height: 48px;
+            text-align: center;
+        }
+        .form-control {
+            width: 290px;
+            height: 50px;
+            border: 1px solid #FFFFFF;
+            outline: none;
+        }
+        .help-block {
+            position: absolute;
+            bottom: -24px;
+            left: 20px;
+            /*color: #FF0000;*/
+        }
+        .success{
+            color:#0c0;
+        }
+        .error{
+            color: #ff000f;
+        }
+        .form-chck {
+            width: 290px;
+            height: 30px;
+            line-height: 30px;
+            padding-top: 10px;
+        }
+        #check {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin-top: 8px;
+        }
+        .help {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .help span {
+            color: #D26201;
+        }
+        .btn {
+            margin-top: 30px;
+        }
+        .btn-success {
+            display:block;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 5px;
+            width: 400px;
+            height: 50px;
+            background: #FF6900;
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+            border: 0;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="header"></div>
+<section id="login">
+    <div class="login">
+        <form action="" id="form-register">
+            <div class="from-group">
+                <label for="uname" class="control-label">用户名</label>
+                <input class="form-control" id="uname" name="uname" type="text" placeholder="您的常用手机号" required/>
+                <span class="help-block"></span>
+            </div>
+            <div class="from-group">
+                <label for="upwd" class="control-label">设置密码</label>
+                <input class="form-control" id="upwd"  name="upwd" type="password" placeholder="请输入密码" minlength="6" maxlength="12" required/>
+                <span class="help-block"></span>
+            </div>
+            <!--<div class="from-group">-->
+                <!--<label for="up" class="control-label">确认密码</label>-->
+                <!--<input class="form-control" id="up" name="upwd" type="password" placeholder="请输入确认密码"/>-->
+                <!--<span class="help-block">请确认确认密码</span>-->
+            <!--</div>-->
+            <!--<div class="from-group">-->
+                <!--<label for="test" class="control-label">验证码</label>-->
+                <!--<input class="form-control" id="test" name="upwd" type="text" placeholder="请输入验证码" />-->
+                <!--<span class="help-block">请输入验证码</span>-->
+            <!--</div>-->
+            <div class="form-chck">
+                <input type="checkbox" checked name="checked" id="check"/>
+                <label for="check" class="help">我已阅读并同意 <span>《搜农用户注册协议》</span></label>
+            </div>
+            <div class="btn">
+                <button class="btn-success">立即注册</button>
+            </div>
+        </form>
+    </div>
+    <div class="login_rt">
+    </div>
+</section>
+<div id="footer"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $("#header").load("data/header.php");
+    $("#footer").load("data/footer.php");
+    $(function () {
+        $("#header").on("click", ".enter_e", function () {
+            location.href = "enter.html";
+        })
+    })
+    //注册验证
+    $('.btn-success').click(function(e){
+        //var n = $('#uname').val();
+        //var p = $('#upwd').val();
+        e.preventDefault();
+        //表单序列化 - 把选中表单中所有的带name属性的值串联起来，组成k=v&k=v形式，直接用于HTTP请求消息
+        var data = $('#form-register').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'data/login.php',
+            data: data,
+            success: function(obj){
+                if(obj.code === 200){
+                    alert('新用户注册成功！3s自动跳转到登录页');
+                    location.href = 'enter.html';
+                }else {
+                    alert('新用户注册失败！错误消息：'+obj.msg);
+                }
+            },
+            error: function(){
+                alert('异步请求失败！')
+            }
+        });
+    })
+    //ajax表单注册验证
+
+    //表单验证
+    $(function(){
+        $('#uname').focus(function(){
+            $(this).siblings("span").html("请输入用户名");
+            $(this).siblings("span").removeClass().addClass("help-block");
+        })
+        $('#uname').blur(function(){
+            var txt=$(this).val();
+            var reg=/(\+86|0086)?\s*1[34578]\d{9}/;
+            if(!reg.test(txt)){
+                $(this).siblings('span').html("请输入合法的手机号");
+                $(this).siblings("span").addClass("error");
+                $(".btn-success").attr("disabled",true);
+            } else {
+                    $.ajax({
+                        url:'data/login01.php',
+                        data:{uname:txt},
+                        success: function (data) {
+                            if(data.code==0){
+                                $('#uname').siblings('span').html(data.msg);
+                                $('#uname').siblings('span').addClass("error");
+                            }else{
+                                $('#uname').siblings('span').html(data.msg);
+                                $('#uname').siblings('span').addClass("success");
+                            }
+                        }
+                    })
+            }
+         $('#upwd').focus(function(){
+             $(this).siblings("span").html("请设置密码");
+             $(this).siblings("span").removeClass().addClass("help-block");
+         })
+         $("#upwd").blur(function(){
+             var txt=$(this).val();
+             var reg=/^\w{6,12}$/;
+             if(!reg.test(txt)){
+                 $(this).siblings('span').html("密码必须为6~12的字母或数字");
+                 $(this).siblings("span").addClass("error");
+                 $(".btn-success").attr("disabled",true);
+             }else {
+                 $(this).siblings("span").html("密码可以使用");
+                 $(this).siblings("span").addClass('success');
+                 $(".btn-success").attr("disabled",false);
+             }
+         })
+        })
+    })
+</script>
+</body>
+</html>

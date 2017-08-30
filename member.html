@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>会员活动</title>
+    <link rel="stylesheet" href="css/hf.css"/>
+    <link rel="stylesheet" href="css/member.css"/>
+</head>
+<body>
+<div id="header"></div>
+<nav id="nav">
+    <div class="nav">
+        <ul>
+            <li class="nav_1">
+                <a href="#">所有产品分类 <img src="images/classify.png" alt=""/></a>
+                <ul class="son_sort">
+                    <li>
+                        <a href="#"><b></b>水果</a>
+                        <ul class="son_sort_sort">
+                            <li><a href="#">进口水果</a></li>
+                            <li><a href="#">原产水果</a></li>
+                            <li><a href="#">水果礼盒</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><s></s>土货</a>
+                        <ul class="son_sort_sort">
+                            <li><a href="#">原产肉禽</a></li>
+                            <li><a href="#">农家食材</a></li>
+                            <li><a href="#">源创零食</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i></i>礼盒</a>
+                        <ul class="son_sort_sort">
+                            <li><a href="#">特色礼盒</a></li>
+                            <li><a href="#">土货礼盒</a></li>
+                            <li><a href="#">节庆礼盒</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="sou.html" title="首页">首页</a></li>
+            <li><a href="product.html" title="产品中心">产品中心</a></li>
+            <li><a href="business.html" title="企业定制">企业定制</a></li>
+            <li><a href="item.html" title="特色馆">特色馆</a></li>
+            <li><a href="#" title="会员中心">会员活动</a></li>
+            <li><a href="healt.html" title="健康养生">健康养生</a></li>
+        </ul>
+    </div>
+</nav>
+<section id="all">
+    <div class="slide">
+        <ul class="slide_list">
+            <li><img src="images/img/hy_ban.jpg" alt=""/></li>
+            <li><img src="images/img/hy_ban.jpg" alt=""/></li>
+            <li><img src="images/img/hy_ban.jpg" alt=""/></li>
+            <li><img src="images/img/hy_ban.jpg" alt=""/></li>
+        </ul>
+        <ul class="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="">
+
+        </div>
+        <div class="integral">
+            <p><img src="images/img/login-logo.png" alt=""/></p>
+            <a href="enter.html">登录查积分</a>
+            <span>没账号?/<a href="login.html">去注册</a></span>
+        </div>
+    </div>
+    <div class="gain">
+        <ul>
+            <li>
+                <div class="itm_img">
+                    <img src="images/img/integral-i_03.png" alt=""/>
+                </div>
+                <div class="itm_txt">
+                    <h1>如何获取积分</h1>
+                    <p> 在搜农坊消费正价商品获得积分</p>
+                </div>
+            </li>
+            <li>
+                <div class="itm_img">
+                    <img src="images/img/integral-i_05.png" alt=""/>
+                </div>
+                <div class="itm_txt">
+                    <h1>积分加速规则</h1>
+                    <p> 会员等级越高积分获得越多</p>
+                </div>
+            </li>
+            <li>
+                <div class="itm_img">
+                    <img src="images/img/integral-i_07.png" alt=""/>
+                </div>
+                <div class="itm_txt">
+                    <h1>如何使用积分</h1>
+                    <p> 积分商城好礼不断</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="wares">
+        <div class="huo">
+            <img src="images/img/integral-g_03.png" alt=""/>
+            <h2>最新商品</h2>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $("#header").load("data/header.php", function () {
+        $("#welcome").html("欢迎回来：" + sessionStorage["loginUname"]);
+    });
+    $("#footer").load("data/footer.php");
+    $(function () {
+        $("#header").on("click", ".enter_e", function () {
+            location.href = "enter.html";
+        })
+        $("#header").on("click", ".login_e", function () {
+            location.href = "login.html";
+        })
+    })
+    $(function () {//导航栏下拉菜单
+        $(".nav_1").hover(function () {
+            var $sort = $(this).children(".son_sort");
+            $sort.toggle();
+        })
+    })
+    //轮播
+    $(function () {
+        var i = 0;
+        var timer = null;
+        $(".slide").hover(function () {
+            clearInterval(timer);
+        }, function () {
+            timer = setInterval(function () {
+                i++;
+                if (i > 3) {
+                    i = 0;
+                }
+                $(".btn>li").eq(i).addClass("hover").siblings(".hover").removeClass("hover");
+                $(".slide_list li").stop(false, true).animate({left: -i * 1920 + "px"}, 500)
+            }, 3000)
+        }).trigger("mouseleave");
+    })
+    $(".btn li").on("mouseenter", function () {
+        var m = $(this).index();
+        $(".btn>li").eq(m).addClass("hover").siblings(".hover").removeClass("hover");
+        $(".slide_list li").stop(false, true).animate({left: -m * 1920 + "px"}, 500);
+    })
+</script>
+</body>
+</html>

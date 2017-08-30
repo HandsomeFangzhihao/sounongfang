@@ -1,0 +1,272 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font: 12px "微软雅黑", "microsoft yahei", sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #444;
+}
+
+a:hover {
+    color: #000;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li, ol, li, dt, dd, dl {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav,#all{
+    margin: 0 auto;
+    padding: 0;
+    width: 1211px;
+}
+/*页面布局*/
+
+#nav {
+    width: 100%;
+    border-bottom: 1px solid #CD660B;
+    height: 42px;
+    line-height: 42px;
+}
+
+#nav > .nav {
+    width: 1211px;
+    margin: 0 auto;
+}
+
+.nav > ul > li {
+    float: left;
+}
+
+.nav > ul > li > a {
+    color: #CD660B;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 0 40px;
+}
+
+.nav > ul > li:hover {
+    background: #B85B09;
+}
+
+.nav > ul > li:hover a {
+    color: #ffffff;
+}
+
+#nav .nav_1 {
+    background: #CD660B;
+    position: relative;
+}
+
+#nav .nav_1:hover {
+    background: #B85B09;
+}
+
+#nav .nav_1 > a {
+    color: #FFF;
+    padding-right: 100px;
+    padding-left: 20px;
+}
+
+#nav .nav_1 a img {
+    position: absolute;
+    top: 11px;
+    right: 19px;
+}
+
+.son_sort {
+    width: 210px;
+    min-height: 190px;
+    border: 2px solid #B85B09;
+    position: absolute;
+    top: 43px;
+    left: 0;
+    padding: 0 5px 0 30px;
+    display: none;
+    z-index: 10;
+    background: #ffffff;
+}
+
+.nav .nav_1:hover a {
+    color: #000;
+}
+.son_sort > li > a > b {
+    display: inline-block;
+    width: 36px;
+    height: 18px;
+}
+
+.son_sort > li > a > s {
+    display: inline-block;
+    width: 36px;
+    height: 18px;
+}
+
+.son_sort > li > a > i {
+    display: inline-block;
+    width: 36px;
+    height: 18px;
+}
+.son_sort > li b {
+    background: url("../images/spirit.png") no-repeat -269px -9px;
+}
+
+.son_sort > li s {
+    background: url("../images/spirit.png") no-repeat -273px -50px;
+}
+
+.son_sort > li i {
+    background: url("../images/spirit.png") no-repeat -274px -98px;
+}
+
+.son_sort_sort li {
+    float: left;
+    line-height: 5px;
+    margin-right: 8px;
+}
+
+.son_sort > li {
+    margin-top: 15px;
+}
+#nav .son_sort_sort li a:hover {
+    color: #CD660B;
+}
+/*主体内容*/
+#all{
+    margin-bottom:50px;
+}
+.top_img{
+    margin-top:20px;
+}
+.top_img img{
+    width:1211px;
+}
+.clip h1{
+    color:#CD660B;
+    height:50px;
+    line-height: 55px;
+    border-bottom:2px solid #CD660B;
+}
+.clip_img li{
+    float:left;
+    width:367px;
+    height:410px;
+    border:1px solid #E0E0E0;
+    margin: 20px 10px;
+}
+.clip_img img{
+    width:355px;
+    height:300px;
+}
+#all:before{
+    content:"";
+    display:table;
+}
+#all:after{
+    content:"";
+    display:block;
+    clear: both;
+}
+.clip_img li span{
+    text-align: center;
+    display:block;
+    border-bottom: 1px solid #E0E0E0;
+    margin:10px;
+    height:30px;
+    line-height: 20px;
+    font-size:14px;
+    color:#333;
+
+}
+.clip_img li p{
+    width:350px;
+    height:35px;
+    line-height: 20px;
+    margin:0 auto;
+    height:35px;
+    line-height: 20px;
+    color:#FF7800;
+}
+.clip_img:after{
+    content:"";
+    display:block;
+    clear:both;
+}
+
+
+.main_part ul{
+    float:left;
+    margin-top:30px;
+}
+
+.main_part li{
+    float:left;
+    width:280px;
+    height:320px;
+    margin-right:18px;
+    padding:2px;
+    margin-top:10px ;
+}
+.main_part li img{
+    width:280px;
+    height:240px;
+    margin-bottom: 10px;
+}
+.main_part li a{
+    color:#333333;
+    font-size:14px;
+}
+.main_part li span{
+    float:right;
+    color: #333333;
+    padding-right:5px ;
+}
+.main_part li span b{
+    font-weight: normal;
+    color:#F00F00;
+}
+.main_part li p{
+    font-weight: bold;
+    color:#FF4A4A;
+    font-size:18px;
+    margin-top: 10px;
+}
+.main_part li p s{
+    color:#888888;
+    font-size: 14px;
+    padding-left: 8px;
+}
+.main_part li p button{
+    width: 80px;
+    float:right;
+    font-size:12px;
+    color: #ffffff;
+    background: #FF6900;
+    border-radius: 2px;
+    outline: none;
+    border: 0;
+    padding:5px;
+}
+.main_part li p button:hover{
+    color:#FF6900;
+    background: #FFFFFF;
+    border:1px solid #FF6900;
+}
+.clip>h1 a{
+    color:#FF6900;
+    float:right;
+    font-weight: normal;
+    font-size: 14px;
+}
+.clip:after{
+    content:"";
+    display: block;
+    clear:both;
+}

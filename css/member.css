@@ -1,0 +1,270 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font: 12px "Î¢ÈíÑÅºÚ", "microsoft yahei", sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #444;
+}
+
+a:hover {
+    color: #000;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li, ol, li, dt, dd, dl {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav{
+    margin: 0 auto;
+    padding: 0;
+    width: 1211px;
+}
+/*Ò³Ãæ²¼¾Ö*/
+
+#nav {
+    width: 100%;
+    border-bottom: 1px solid #CD660B;
+    height: 42px;
+    line-height: 42px;
+}
+
+#nav > .nav {
+    width: 1211px;
+    margin: 0 auto;
+}
+
+.nav > ul > li {
+    float: left;
+}
+
+.nav > ul > li > a {
+    color: #CD660B;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 0 40px;
+}
+
+.nav > ul > li:hover {
+    background: #B85B09;
+}
+
+.nav > ul > li:hover a {
+    color: #ffffff;
+}
+
+#nav .nav_1 {
+    background: #CD660B;
+    position: relative;
+}
+
+#nav .nav_1:hover {
+    background: #B85B09;
+}
+
+#nav .nav_1 > a {
+    color: #FFF;
+    padding-right: 100px;
+    padding-left: 20px;
+}
+
+#nav .nav_1 a img {
+    position: absolute;
+    top: 11px;
+    right: 19px;
+}
+
+.son_sort {
+    width: 210px;
+    min-height: 190px;
+    border: 2px solid #B85B09;
+    position: absolute;
+    top: 43px;
+    left: 0;
+    padding: 0 5px 0 30px;
+    display: none;
+    z-index: 10;
+    background: #ffffff;
+}
+
+.nav .nav_1:hover a {
+    color: #000;
+}
+.son_sort > li > a > b {
+    display: inline-block;
+    width: 36px;
+    height: 18px;
+}
+
+.son_sort > li > a > s {
+    display: inline-block;
+    width: 36px;
+    height: 18px;
+}
+
+.son_sort > li > a > i {
+    display: inline-block;
+    width: 36px;
+    height: 18px;
+}
+.son_sort > li b {
+    background: url("../images/spirit.png") no-repeat -269px -9px;
+}
+
+.son_sort > li s {
+    background: url("../images/spirit.png") no-repeat -273px -50px;
+}
+
+.son_sort > li i {
+    background: url("../images/spirit.png") no-repeat -274px -98px;
+}
+
+.son_sort_sort li {
+    float: left;
+    line-height: 5px;
+    margin-right: 8px;
+}
+
+.son_sort > li {
+    margin-top: 15px;
+}
+#nav .son_sort_sort li a:hover {
+    color: #CD660B;
+}
+/*ÂÖ²¥*/
+#all{
+    width:100%;
+    position:relative;
+}
+.slide_list{
+    width:9600px;
+    height:520px;
+}
+.slide{
+    width:1920px;
+    height:520px;
+    overflow: hidden;
+    position: relative;
+}
+.slide_list li{
+    float:left;
+    position:relative;
+    left:0;
+}
+.btn{
+    width: 140px;
+    position:absolute;
+    bottom:10px;
+    left:47%;
+    z-index: 100;
+}
+.btn li{
+    float:left;
+    display:inline-block;
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    background: #000000;
+    cursor: pointer;
+    margin-left:8px;
+}
+.btn .hover{
+    background: #ee092a;
+}
+.gain{
+    width:1211px;
+    margin: 35px auto;
+}
+.gain li{
+    width:33%;
+    text-align: center;
+    float:left;
+}
+.itm_img{
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+.itm_txt{
+    display:inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+.itm_txt h1{
+    font-weight: normal;
+    color:#FF6827;
+}
+#all:before{
+    content:"";
+    display:table;
+}
+#all:after{
+    content:"";
+    display:table;
+    clear: both;
+}
+.gain:after{
+    content:"";
+    display:block;;
+    clear: both;
+}
+.wares{
+    width:1211px;
+    margin:0 auto;
+    height:100px;
+}
+.huo{
+    border-bottom:1px solid #DDDDDD;
+    padding-bottom:10px;
+}
+.huo img{
+    float:left;
+    vertical-align: middle;
+}
+.huo h2{
+    float:left;
+    vertical-align: middle;
+    font-size:22px;
+    padding-left:10px;
+}
+.huo:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.integral{
+    width: 286px;
+    height:260px;
+    background: rgba(126, 174, 250, 0.24);
+    position:absolute;
+    top:10%;
+    right: 15%;
+    text-align: center;
+}
+.integral>p{
+    margin-top:22px;
+}
+.integral>a{
+    display:block;
+    width:213px;
+    height:38px;
+    background: #F08200;
+    color: #ffffff;
+    margin: 0 auto;
+    line-height: 38px;
+    font-size: 16px;
+}
+.integral>span{
+    color: #000000;
+    display: inline-block;
+    padding-top:5px;
+}.integral>span a{
+    color: #000000;
+}

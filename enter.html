@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/hf.css"/>
+    <style>
+        #enter {
+            width: 350px;
+            height: 380px;
+            background: #FFFF00;
+            position: relative;
+            top: 0px;
+            left: 57%;
+            margin: 150px 0;
+            padding: 0 18px;
+        }
+
+        .title {
+            height: 50px;
+            line-height: 40px;
+
+        }
+
+        .title b {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: url("images/logo_select.png") no-repeat;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        .title h2 {
+            font-weight: normal;
+            float: left;
+            color: #555555;
+        }
+
+        .title a {
+            float: right;
+            color: #CF6C06;
+        }
+
+        .offer {
+            background: #FFF6D2;
+            padding: 0 20px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .offer span {
+            display: inline-block;
+            color: #666666;
+        }
+
+        .offer b {
+            display: inline-block;
+            width: 14px;
+            height: 18px;
+            margin: 0 6px;
+            background: url("images/logo_notice.png") no-repeat;
+            vertical-align: middle;
+        }
+
+        .enter {
+            width: 304px;
+            height: 40px;
+            border: 1px solid #DDDDDD;
+            box-sizing: border-box;
+            margin: 10px 0;
+        }
+
+        #enter .control-label {
+            display: inline-block;
+            width: 42px;
+            height: 40px;
+            border-right: 1px solid #DDDDDD;
+            background: #F3F3F3;
+            vertical-align: middle;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+        }
+        .control-label i,.control-label b{
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+        }
+        .control-label i{
+            background: url("images/logo_person.png") no-repeat;
+        }
+        .control-label b{
+            background: url("images/logo_password.png") no-repeat;
+        }
+        .enter input {
+            width: 258px;
+            height: 38px;
+            outline: none;
+            border: 0;
+            float: left;
+            padding:5px 10px;
+        }
+        #chck{
+            float:left;
+        }
+        .check p a{
+            float:right;
+        }
+        .btn a{
+            display: inline-block;
+            width: 306px;
+            height: 38px;
+            line-height: 38px;
+            background: #FF8B1E;
+            font-size: 20px;
+            color: #FFFFFF;
+            font-weight:bold;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btn a:hover{
+            background: #FE7F08;
+        }
+        .join{
+            margin-top: 35px;
+        }
+        .join p{
+            color:#999999;
+            margin-bottom: 10px;
+        }
+        .join li a{
+            float:left;
+            width: 88px;
+            height:27px;
+            line-height: 27px;
+            vertical-align: middle;
+            background: #FBFBFB;
+            margin-right: 8px;
+            text-align: center;
+        }
+        .join li a b{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            background: url("images/logo_wechat.png") no-repeat;
+        }
+        .join li:nth-child(2) a b{
+            background: url("images/logo_qq.png") no-repeat;
+        }
+        .join li:last-child a b{
+            background: url("images/logo_pay.png") no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div id="header"></div>
+<div id="enter">
+    <div class="title">
+        <h2>搜农坊会员登录</h2>
+        <a href="login.html"><b></b>立即注册</a>
+    </div>
+    <div class="offer">
+        <b></b><span id="alert">公共场所不建议自动登录，以防账号丢失</span>
+    </div>
+    <form action="">
+        <div class="enter">
+            <label for="uname" class="control-label"><i></i></label>
+            <input type="text" id="uname" name="uname" placeholder="邮箱/手机/用户名" value="rongyao"/>
+        </div>
+        <div class="enter">
+            <label for="upwd" class="control-label"><b></b></label>
+            <input type="password" id="upwd" name="upwd" placeholder="密码"value="456789"/>
+        </div>
+        <div class="check">
+            <input type="checkbox" id="chck" name="check"/>
+            <label for="chck">自动登录</label>
+            <p><a href="#">忘记密码?</a></p>
+        </div>
+        <div class="btn">
+            <a id="btn">登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
+        </div>
+        <div class="join">
+            <p>合作网站账户登录</p>
+            <ul>
+                <li><a href="#"><b></b>微信登录</a></li>
+                <li><a href="#"><b></b>QQ登录</a></li>
+                <li><a href="#"><b></b>支付宝</a></li>
+            </ul>
+        </div>
+    </form>
+</div>
+<div id="footer"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+        $("#header").load("data/header.php")
+        $("#footer").load("data/footer.php")
+    })
+$("#btn").click(function(){
+    var n=$('[name="uname"]').val();
+    var p=$('[name="upwd"]').val();
+    $.ajax({
+        type:"POST",
+        url:"data/enter.php",
+        data:{uname:n,upwd:p},
+        success:function(data){
+            if(data.code<0){
+                $("#alert").html(data.msg);
+            }else{
+                $("#welcome").html("欢迎回来:"+data.uname);
+                sessionStorage["loginUname"]=data.uname;
+                sessionStorage["loginUid"]=data.uid;
+                location.href="sou.html";
+            }
+        },
+        error:function(){
+            alert('响应消息有问题！请检查Network！');
+        }
+    });
+
+})
+
+</script>
+</body>
+</html>
